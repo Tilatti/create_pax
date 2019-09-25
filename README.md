@@ -16,11 +16,11 @@ would try this:
 $ tar -c -v -f archive.tar --format=pax --pax-option "VENDOR.opt:=1" file1 --pax-option "VENDOR.opt:=2" file2
 ```
 
-Each extended header of the *file1* file will contain the both options
+But the extended record headers of the two files will contain the both options
 "VENDOR.opt=1" and "VENDOR.opt=2". It is not possible to write an option just
 for the next file of the archive.
 
-Note: the [pax][3] utility in FreeBSD 12.0 refuses to create vendor specifc
+Addtionally the [pax][3] utility in FreeBSD 12.0 refuses to create vendor specifc
 options.
 
 # Solution
@@ -42,7 +42,7 @@ $ tar -r -v -f archive.tar --pax-option "VENDOR.opt:=1" file1
 $ tar -r -v -f archive.tar --pax-option "VENDOR.opt:=2" file2
 ```
 
-# create_pax.sh usage
+# Usage
 
 ```console
 Usage: ./create_pax.sh ARCHIVE VENDOR_IDENTIFIER < INI_FILE
@@ -69,6 +69,6 @@ EOF
 ```
 
 [1]: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html
-[3]: https://www.freebsd.org/cgi/man.cgi?query=tar&sektion=5
+[2]: https://www.freebsd.org/cgi/man.cgi?query=tar&sektion=5
 [3]: https://www.freebsd.org/cgi/man.cgi?query=pax&sektion=1
 
