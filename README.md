@@ -42,6 +42,17 @@ $ tar -r -v -f archive.tar --pax-option "VENDOR.opt:=1" file1
 $ tar -r -v -f archive.tar --pax-option "VENDOR.opt:=2" file2
 ```
 
+Note that these extended header keywords are unknown by GNU tar. Therefore
+their are ignored during the extraction.
+
+```console
+$ tar -x -v -f archive.tar
+tar: Ignoring unknown extended header keyword 'VENDOR.opt'
+file1
+tar: Ignoring unknown extended header keyword 'VENDOR.opt'
+file2
+```
+
 # Usage
 
 ```console
@@ -71,4 +82,3 @@ EOF
 [1]: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html
 [2]: https://www.freebsd.org/cgi/man.cgi?query=tar&sektion=5
 [3]: https://www.freebsd.org/cgi/man.cgi?query=pax&sektion=1
-
